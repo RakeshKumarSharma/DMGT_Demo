@@ -1,0 +1,16 @@
+reports
+screenshot
+target
+
+# Eclipse
+*.classpath
+*.project
+*.settings
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+*log*
+
+.DS_Store
