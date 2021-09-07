@@ -18,10 +18,6 @@ import java.util.concurrent.TimeUnit;
 public class DriverFactory {
     public static WebDriver driver;
 
-    //private static final String CHROME_DRIVER= "webdriver.chrome.driver";
-
-    //private static final String FIREFOX_DRIVER= "webdriver.gecko.driver";
-
     private static ChromeOptions options;
 
     private static final String workingDir = System.getProperty("user.dir");
@@ -42,18 +38,14 @@ public class DriverFactory {
 
         browser = testContext.readproperty("browser");
 
-        //if (System.getProperty("browser").equalsIgnoreCase("chrome")) {
         if (browser.equalsIgnoreCase("chrome")) {
 
             ChromeOptions options = getChromeCustomOptions();
-            //System.setProperty(CHROME_DRIVER, testContext.readproperty("CHROME.DRIVER"));
-            //WebDriverManager.getInstance(ChromeDriver.class).setup();
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //} else if (System.getProperty("browser").equalsIgnoreCase("firefox")) {
+
         } else if (browser.equalsIgnoreCase("firefox")) {
-            //System.setProperty(FIREFOX_DRIVER, testContext.readproperty("FIREFOX.DRIVER"));
             FirefoxOptions ffOptions = new FirefoxOptions();
             ffOptions.addPreference("marionette", false);
             ffOptions.setAcceptInsecureCerts(true);
